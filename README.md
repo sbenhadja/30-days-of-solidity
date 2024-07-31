@@ -20,4 +20,4 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
         npx hardhat test
         REPORT_GAS=true npx hardhat test
         npx hardhat node
-        npx hardhat run scripts/deploy.js
+        npx hardhat run scripts/deploy.js --network "network_name"
