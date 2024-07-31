@@ -5,26 +5,22 @@
 // will compile your contracts, add the Hardhat Runtime Environment's members to the
 // global scope, and execute the script.
 
-/******* Commented By S.benhadja ********/
-/*
+/******** this script for Lock.sol ****************************************/
+/**************************************************************************/
 const hre = require("hardhat");
 
 async function main() {
   const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+  const unlockTime = currentTimestampInSeconds + 120;
 
-  const lockedAmount = hre.ethers.parseEther("0.001");
+  const lockedAmount = hre.ethers.utils.parseEther("1");
 
-  const lock = await hre.ethers.deployContract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
+  const lock = await hre.ethers.deployContract("Lock", [unlockTime], { value: lockedAmount });
 
-  await lock.waitForDeployment();
+  await lock.deployed();
 
   console.log(
-    `Lock with ${ethers.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
+    `Lock with ${lockedAmount}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
   );
 }
 
@@ -34,10 +30,10 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
-********************************************************************/
+/********************************************************************/
 
 
-/*****this script for HelloWorld.sol ***** commented on 27/07/2024 ********/
+/***** this script for HelloWorld.sol ***** commented on 27/07/2024 ********/
 /**************************************************************************/
 /*
 async function main() {
@@ -93,6 +89,7 @@ main()
 
 /******* this for deploy horoscoopNFT.sol **************/
 /*******************************************************/
+/*
 const hre = require("hardhat");
 
 async function main() {
@@ -111,4 +108,4 @@ main()
     console.error(error);
     process.exit(1);
   });
-
+*************************/
